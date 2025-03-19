@@ -12,6 +12,7 @@
 
 #pragma once
 #include <rclcpp/rclcpp.hpp>
+#include <rclcpp/node.hpp>
 
 namespace astra_camera {
 class ParametersBackend {
@@ -19,7 +20,7 @@ class ParametersBackend {
   explicit ParametersBackend(rclcpp::Node* node);
   ~ParametersBackend();
   void addOnSetParametersCallback(
-      rclcpp::node_interfaces::NodeParametersInterface::OnParametersSetCallbackType callback);
+      rclcpp::node_interfaces::NodeParametersInterface::OnSetParametersCallbackType callback);
 
  private:
   rclcpp::Node* node_;

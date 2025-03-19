@@ -34,7 +34,7 @@
 
 #include <image_transport/image_transport.hpp>
 #include <sensor_msgs/image_encodings.hpp>
-#include <image_geometry/pinhole_camera_model.h>
+#include <image_geometry/pinhole_camera_model.hpp>
 #include "astra_camera/point_cloud_proc/point_cloud_xyz.h"
 
 namespace astra_camera {
@@ -46,8 +46,7 @@ PointCloudXyzNode::PointCloudXyzNode(rclcpp::Node *const node,
   setAndGetNodeParameter<int>(parameters_, queue_size_, "queue_size", 5);
   std::string point_cloud_qos;
   std::string depth_qos;
-  setAndGetNodeParameter<std::string>(parameters_, point_cloud_qos, "point_cloud_qos",
-                                      "default");
+  setAndGetNodeParameter<std::string>(parameters_, point_cloud_qos, "point_cloud_qos", "default");
   setAndGetNodeParameter<std::string>(parameters_, depth_qos, "depth_qos", "default");
   depth_qos_profile_ = getRMWQosProfileFromString(depth_qos);
   // Monitor whether anyone is subscribed to the output
