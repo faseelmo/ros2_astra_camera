@@ -1,6 +1,6 @@
 /**************************************************************************/
 /*                                                                        */
-/* Copyright (c) 2013-2022 Orbbec 3D Technology, Inc                      */
+/* Copyright (c) 2013-2023 Orbbec 3D Technology, Inc                      */
 /*                                                                        */
 /* PROPRIETARY RIGHTS of Orbbec 3D Technology are involved in the         */
 /* subject matter of this material. All manufacturing, reproduction, use, */
@@ -12,7 +12,6 @@
 
 #pragma once
 #include <rclcpp/rclcpp.hpp>
-#include <rclcpp/node.hpp>
 
 namespace astra_camera {
 class ParametersBackend {
@@ -20,7 +19,7 @@ class ParametersBackend {
   explicit ParametersBackend(rclcpp::Node* node);
   ~ParametersBackend();
   void addOnSetParametersCallback(
-      rclcpp::node_interfaces::NodeParametersInterface::OnSetParametersCallbackType callback);
+      rclcpp::node_interfaces::NodeParametersInterface::OnParametersSetCallbackType callback);
 
  private:
   rclcpp::Node* node_;
