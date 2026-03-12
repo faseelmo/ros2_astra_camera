@@ -41,7 +41,7 @@ find_package(tf2_ros REQUIRED)
 find_package(tf2_sensor_msgs REQUIRED)
 find_package(PkgConfig REQUIRED)
 
-pkg_search_module(LIBUVC REQUIRED libuvc)
+pkg_search_module(LIBUVC REQUIRED IMPORTED_TARGET libuvc)
 if (NOT LIBUVC_FOUND)
   message(FATAL_ERROR "libuvc is not found")
 endif ()
@@ -132,7 +132,7 @@ target_link_libraries(${PROJECT_NAME}
   ${OpenCV_LIBS}
   Eigen3::Eigen
   glog::glog
-  ${LIBUVC_LIBRARIES}
+  PkgConfig::LIBUVC
   -lOpenNI2
   -L${ORBBEC_OPENNI2_REDIST}
   )
@@ -159,7 +159,7 @@ target_link_libraries(${PROJECT_NAME}_node
   ${OpenCV_LIBS}
   Eigen3::Eigen
   glog::glog
-  ${LIBUVC_LIBRARIES}
+  PkgConfig::LIBUVC
   -lOpenNI2
   -L${ORBBEC_OPENNI2_REDIST}
   ${PROJECT_NAME}
@@ -184,7 +184,7 @@ target_link_libraries(list_devices_node
   ${OpenCV_LIBS}
   Eigen3::Eigen
   glog::glog
-  ${LIBUVC_LIBRARIES}
+  PkgConfig::LIBUVC
   -lOpenNI2
   -L${ORBBEC_OPENNI2_REDIST}
   ${PROJECT_NAME}
@@ -211,7 +211,7 @@ target_link_libraries(clean_shm_node
   ${OpenCV_LIBS}
   Eigen3::Eigen
   glog::glog
-  ${LIBUVC_LIBRARIES}
+  PkgConfig::LIBUVC
   -lOpenNI2
   -L${ORBBEC_OPENNI2_REDIST}
   ${PROJECT_NAME}
