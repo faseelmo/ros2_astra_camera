@@ -45,11 +45,14 @@ pkg_search_module(LIBUVC REQUIRED libuvc)
 if (NOT LIBUVC_FOUND)
   message(FATAL_ERROR "libuvc is not found")
 endif ()
-pkg_search_module(GLOG REQUIRED libglog)
 
-if (NOT GLOG_FOUND)
-  message(FATAL_ERROR "glog is not found")
-endif ()
+find_package(glog REQUIRED)
+
+# pkg_search_module(GLOG REQUIRED libglog)
+
+# if (NOT GLOG_FOUND)
+#   message(FATAL_ERROR "glog is not found")
+# endif ()
 
 
 execute_process(COMMAND uname -m OUTPUT_VARIABLE MACHINES)
@@ -117,7 +120,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
   ${OpenCV_INCLUDED_DIRS}
   ${LIBUVC_INCLUDE_DIRS}
   ${LIBUVC_INCLUDE_DIRS}
-  ${GLOG__INCLUDE_DIRS}
+  # ${GLOG__INCLUDE_DIRS}
   )
 
 ament_target_dependencies(${PROJECT_NAME}
@@ -127,7 +130,7 @@ ament_target_dependencies(${PROJECT_NAME}
 target_link_libraries(${PROJECT_NAME}
   ${OpenCV_LIBS}
   Eigen3::Eigen
-  ${GLOG_LIBRARIES}
+  glog::glog
   ${LIBUVC_LIBRARIES}
   -lOpenNI2
   -L${ORBBEC_OPENNI2_REDIST}
@@ -144,7 +147,7 @@ target_include_directories(${PROJECT_NAME}_node PUBLIC
   ${OpenCV_INCLUDED_DIRS}
   ${LIBUVC_INCLUDE_DIRS}
   ${LIBUVC_INCLUDE_DIRS}
-  ${GLOG__INCLUDE_DIRS}
+  # ${GLOG__INCLUDE_DIRS}
   )
 
 ament_target_dependencies(${PROJECT_NAME}_node
@@ -154,7 +157,7 @@ ament_target_dependencies(${PROJECT_NAME}_node
 target_link_libraries(${PROJECT_NAME}_node
   ${OpenCV_LIBS}
   Eigen3::Eigen
-  ${GLOG_LIBRARIES}
+  glog::glog
   ${LIBUVC_LIBRARIES}
   -lOpenNI2
   -L${ORBBEC_OPENNI2_REDIST}
@@ -170,7 +173,7 @@ target_include_directories(list_devices_node PUBLIC
   $<INSTALL_INTERFACE:include>
   ${OpenCV_INCLUDED_DIRS}
   ${LIBUVC_INCLUDE_DIRS}
-  ${GLOG__INCLUDE_DIRS}
+  # ${GLOG__INCLUDE_DIRS}
   )
 
 ament_target_dependencies(list_devices_node
@@ -179,7 +182,7 @@ ament_target_dependencies(list_devices_node
 target_link_libraries(list_devices_node
   ${OpenCV_LIBS}
   Eigen3::Eigen
-  ${GLOG_LIBRARIES}
+  glog::glog
   ${LIBUVC_LIBRARIES}
   -lOpenNI2
   -L${ORBBEC_OPENNI2_REDIST}
@@ -196,7 +199,7 @@ target_include_directories(clean_shm_node PUBLIC
   $<INSTALL_INTERFACE:include>
   ${OpenCV_INCLUDED_DIRS}
   ${LIBUVC_INCLUDE_DIRS}
-  ${GLOG__INCLUDE_DIRS}
+  # ${GLOG__INCLUDE_DIRS}
   )
 
 ament_target_dependencies(clean_shm_node
@@ -206,7 +209,7 @@ ament_target_dependencies(clean_shm_node
 target_link_libraries(clean_shm_node
   ${OpenCV_LIBS}
   Eigen3::Eigen
-  ${GLOG_LIBRARIES}
+  glog::glog
   ${LIBUVC_LIBRARIES}
   -lOpenNI2
   -L${ORBBEC_OPENNI2_REDIST}
