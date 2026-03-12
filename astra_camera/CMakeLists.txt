@@ -45,7 +45,6 @@ pkg_search_module(LIBUVC REQUIRED libuvc)
 if (NOT LIBUVC_FOUND)
   message(FATAL_ERROR "libuvc is not found")
 endif ()
-pkg_search_module(GLOG REQUIRED libglog)
 
 
 find_package(glog REQUIRED)
